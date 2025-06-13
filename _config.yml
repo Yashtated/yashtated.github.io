@@ -1,0 +1,31 @@
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+remote_theme: "murraco/jekyll-theme-minimal-resume"
+title: "Yash Tated"
+description: "Data Scientist & Engineer Portfolio"
+author: "Yash Tated"
+# a url that will be used for the canonical link
+url: https://yashtated.github.io
+
+# sidebar config
+sidebar:
+  # an image of you, stored in the same folder as this file
+  # a file called "profile.png" is a good size
+  photo: profile.png
+  # sidebar text, can be multiple paragraphs
+  text: "Driven data professional with experience in machine learning, data engineering, and cloud technologies. Currently pursuing an MS in Business Analytics & AI at UT Dallas."
+
+  # social media links.
+  # use 'fab' or 'fas' for icons.
+  # check https://fontawesome.com/v5.15/icons
+  social:
+    - icon: "fas fa-envelope"
+      url: "mailto:yashtated0407@gmail.com"
+    - icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/yash-tated-/"
+    - icon: "fab fa-github"
+      url: "https://github.com/Yashtated"
