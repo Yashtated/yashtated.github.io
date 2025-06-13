@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Tated | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script> <style>
+        :root {
+            --sidebar-bg: #191919;
+            --main-bg: #FFFFFF;
+            --text-dark: #212529;
+            --text-light: #F8F9FA;
+            --text-muted: #6C757D;
+            --accent-color: #007BFF;
+            --card-bg: #F8F9FA;
+            --card-border: #E9ECEF;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            background-color: var(--sidebar-bg);
+        }
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 320px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background-color: var(--sidebar-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .sidebar .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #333;
+        }
+        .sidebar h1 {
+            font-size: 2rem;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text-light);
+        }
+        .sidebar .job-title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        .sidebar nav a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .sidebar nav a:hover {
+            color: var(--text-light);
+        }
+        .social-links {
+            margin-top: 2rem;
+        }
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: 320px;
+            width: calc(100% - 320px);
+            background-color: var(--main-bg);
+            min-height: 100vh;
+        }
+        section {
+            padding: 6rem 4rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h2.section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+        }
+        
+        /* About Section */
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            max-width: 800px;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .project-card .card-content {
+            padding: 1.5rem;
+        }
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Skills Section */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            column-count: 2;
+            column-gap: 2rem;
+        }
+        .skills-list li {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .skills-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-right: 0.75rem;
+        }
+
+        /* Contact Section */
+        #contact p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        #contact .contact-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #contact .contact-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                padding: 2rem 1rem;
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            section {
+                padding: 4rem 2rem;
+            }
+            .skills-list {
+                column-count: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <img src="profile.png" alt="Yash Tated" class="profile-pic">
+        <h1>Yash Tated</h1>
+        <p class="job-title">Data Scientist & Engineer</p>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="social-links">
+             <a href="https://www.linkedin.com/in/yash-tated-/" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://github.com/Yashtated" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                I am a driven and detail-oriented data professional pursuing a Master of Science in Business Analytics & Artificial Intelligence at The University of Texas at Dallas. With hands-on experience as a Data Scientist and Engineer, I specialize in developing machine learning models, engineering robust ETL pipelines, and leveraging cloud technologies like AWS and Azure to turn complex data into actionable insights. I am passionate about using my skills in statistical modeling and big data analytics to solve real-world problems.
+            </p>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>ClearCare Data Initiative</h3>
+                        <p>Engineered an automated Azure pipeline processing over 10 million healthcare pricing records, which cut manual preparation time by 80% through scalable processing and schema standardization.</p>
+                        <a href="https://github.com/Yashtated" target="_blank" class="project-link">View Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Facial Emotion Detection</h3>
+                        <p>Developed a deep learning model for Facial Emotion Recognition using CNNs, achieving 77% accuracy by designing a tailored architecture and using data augmentation.</p>
+                        <a href="https://github.com/Yashtated" target="_blank" class="project-link">View Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Conagra Hackathon</h3>
+                        <p>Finalist in a competitive hackathon by conducting market analysis and using regression and segmentation to provide strategic recommendations for the meat substitute market.</p>
+                        <a href="https://github.com/Yashtated" target="_blank" class="project-link">View Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <ul class="skills-list">
+                <li>Python (Scikit-learn, TensorFlow, Keras) </li>
+                <li>AWS Cloud Suite (S3, EC2, Glue, Redshift) </li>
+                <li>R & Matlab </li>
+                <li>Azure (Blob Storage, Data Factory, Synapse) </li>
+                <li>SQL & NoSQL (Oracle, MongoDB) </li>
+                <li>Tableau & Power BI </li>
+                <li>Big Data (Hadoop, PySpark, Kafka) </li>
+                <li>A/B Testing & Causal Inference </li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I'm currently seeking new opportunities and am always open to discussing new projects and creative ideas. Feel free to reach out—I'd love to hear from you!</p>
+            <a href="mailto:yashtated0407@gmail.com" class="contact-button">Say Hello</a>
+        </section>
+
+    </main>
+</body>
+</html>
