@@ -6,15 +6,15 @@
     <title>Yash Tated | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #000000;
-            --primary-text-color: #EAEAEA;
-            --secondary-text-color: #A0A0A0;
+            --bg-color: #0c0c14;
+            --primary-text-color: #e0e0e0;
+            --secondary-text-color: #a0a0a0;
             --accent-color: #00BFFF; /* Deep Sky Blue */
-            --card-bg-color: rgba(25, 25, 25, 0.85);
-            --card-border-color: rgba(255, 255, 255, 0.1);
+            --card-bg-color: #1a1a2e;
+            --card-border-color: #2a2a4a;
         }
         * {
             margin: 0;
@@ -25,150 +25,133 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: var(--bg-color);
             color: var(--primary-text-color);
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+            line-height: 1.7;
+            background: linear-gradient(45deg, #0c0c14, #1a1a2e, #0c0c14);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
         }
 
-        /* --- Animated Starfield Background --- */
-        #starfield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* --- Header / Navbar --- */
-        .header {
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 10%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            transition: background-color 0.4s ease;
+            transition: background-color 0.3s;
         }
-        .header.scrolled {
-            background-color: var(--card-bg-color);
+        header.scrolled {
+            background-color: rgba(12, 12, 20, 0.85);
             backdrop-filter: blur(10px);
         }
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
-            color: var(--primary-text-color);
+            color: #fff;
         }
         .navbar a {
             font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--primary-text-color);
             text-decoration: none;
-            margin-left: 35px;
+            color: var(--primary-text-color);
+            margin-left: 30px;
+            font-weight: 500;
             transition: color 0.3s;
         }
         .navbar a:hover {
             color: var(--accent-color);
         }
 
-        /* --- Main Content & Sections --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* --- Main Content Wrapper --- */
+        main {
+            padding: 0 8%;
         }
+
+        /* --- Generic Section Styling --- */
         section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 100px 0;
+            padding: 120px 0;
+            border-bottom: 1px solid var(--card-border-color);
+        }
+        section:last-of-type {
+            border-bottom: none;
         }
         .section-title {
-            font-size: 3rem;
-            font-weight: 700;
             text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
             margin-bottom: 4rem;
-            color: var(--primary-text-color);
         }
         .section-title span {
             color: var(--accent-color);
         }
 
-        /* --- Home/Hero Section --- */
-        #home {
-            flex-direction: row;
+        /* --- Home Section --- */
+        .home-container {
+            display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 4rem;
+            min-height: 100vh;
+            padding-top: 80px; /* Offset for header */
         }
         .home-content {
             max-width: 600px;
         }
         .home-content h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 1.5rem;
         }
         .home-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            margin: -3px 0;
-        }
-        .home-content .typing-text {
-            color: var(--accent-color);
+            line-height: 1.2;
         }
         .home-content p {
             font-size: 1.1rem;
             color: var(--secondary-text-color);
-            margin: 1.5rem 0;
+            margin: 1.5rem 0 2rem 0;
         }
         .home-img img {
-            width: 350px;
-            height: 350px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
             object-fit: cover;
-            border-radius: 50%;
             border: 5px solid var(--accent-color);
-            box-shadow: 0 0 30px var(--accent-color);
         }
-        .social-media a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            font-size: 20px;
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 10px 15px 10px 0;
-            transition: 0.5s ease;
-        }
-        .social-media a:hover {
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
             background: var(--accent-color);
-            color: var(--bg-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
             box-shadow: 0 0 20px var(--accent-color);
         }
         
-        /* --- About Section --- */
-        #about .about-content {
-            text-align: center;
-        }
-        #about p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: var(--secondary-text-color);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* --- Card Styles (Projects & Experience) --- */
-        .card-container {
+        /* --- Card Layout for Projects/Experience --- */
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
@@ -176,19 +159,16 @@
         .card {
             background: var(--card-bg-color);
             border: 1px solid var(--card-border-color);
-            border-radius: 16px;
             padding: 2rem;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            transition: transform 0.3s;
         }
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.2);
+            transform: translateY(-5px);
         }
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--accent-color);
-            margin-bottom: 0.5rem;
         }
         .card .date {
             font-style: italic;
@@ -196,8 +176,203 @@
             margin-bottom: 1rem;
         }
         .card ul {
-            list-style-position: inside;
-            padding-left: 0;
+            padding-left: 20px;
+        }
+        .card li {
+            margin-bottom: 0.5rem;
             color: var(--primary-text-color);
         }
-        .
+
+        /* --- Skills Section --- */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .skill-tag {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--card-border-color);
+            color: var(--primary-text-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        /* --- Contact Section --- */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            .home-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            header, main {
+                padding: 20px 4%;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .home-container {
+                padding-top: 60px;
+            }
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+            .home-img img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo">Yash Tated</a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home-container">
+            <div class="home-content">
+                <h3>Hello, I am</h3>
+                <h1>Yash Tated</h1>
+                <p>A Master's student and data professional specializing in Business Analytics and AI, with a passion for building robust data solutions.</p>
+                <a href="#contact" class="btn">Contact Me</a>
+            </div>
+            <div class="home-img">
+                <img src="profile.png" alt="Yash Tated">
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="contact-content">
+                <p>
+                    I am a driven and detail-oriented data professional pursuing a Master of Science in Business Analytics & Artificial Intelligence at The University of Texas at Dallas. With hands-on experience as a Data Scientist and Engineer, I specialize in developing machine learning models, engineering robust ETL pipelines, and leveraging cloud technologies like AWS and Azure to turn complex data into actionable insights.
+                </p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">My <span>Experience</span></h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Applied Data Science & Engineering</h3>
+                    <p class="date">Solveteck Solutions | Feb 2025 - Present</p>
+                    <ul>
+                        <li>Developed ML models that improved top candidate hit rate from 18% to 42%.</li>
+                        <li>Built a PySpark pipeline to normalize skills from 5K+ resumes, improving search accuracy by 40%.</li>
+                        <li>Led A/B testing of job titles, identifying an 18% CTR lift.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Data Engineer</h3>
+                    <p class="date">Techtintum | Oct 2022 - July 2023</p>
+                    <ul>
+                        <li>Engineered ETL pipelines with Airflow, increasing processing efficiency by 50%.</li>
+                        <li>Optimized Redshift storage, reducing query times by 40%.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Data Scientist</h3>
+                    <p class="date">Techtintum | June 2022 - Oct 2022</p>
+                    <ul>
+                        <li>Developed ML models that increased booking forecast accuracy by 20%.</li>
+                        <li>Conducted A/B testing that resulted in a 15% boost in user engagement.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">My <span>Projects</span></h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>ClearCare Data Initiative</h3>
+                    <p class="date">Jan 2025 - May 2025</p>
+                    <ul>
+                        <li>Engineered an automated Azure pipeline processing 10M+ healthcare records, cutting manual prep time by 80%.</li>
+                        <li>Developed Azure Functions to handle schema drift, ensuring 100% format consistency.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Facial Emotion Detection</h3>
+                    <p class="date">Nov 2024 - Dec 2024</p>
+                    <ul>
+                        <li>Developed a deep learning model for Facial Emotion Recognition.</li>
+                        <li>Achieved 77% accuracy with a tailored CNN architecture, outperforming ResNet50.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Conagra Hackathon</h3>
+                    <p class="date">Jan 2024 - April 2024</p>
+                    <ul>
+                        <li>Finalist among 80 teams for innovative solutions in the meat substitute market.</li>
+                        <li>Conducted regression analysis and segmentation to inform strategic recommendations.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">R</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Scikit-learn</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">PySpark</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Azure</span>
+                <span class="skill-tag">Snowflake</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">A/B Testing</span>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-content">
+                <h2 class="section-title">Contact <span>Me</span></h2>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out—I'd love to hear from you!</p>
+                <a href="mailto:yashtated0407@gmail.com" class="btn">yashtated0407@gmail.com</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- Header Scroll Effect ---
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>
